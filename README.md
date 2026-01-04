@@ -4,67 +4,96 @@ Generate high-quality blogs using Meta Llama (Amazon Bedrock) — powered by a f
 
 This project demonstrates how to combine Gen-AI + AWS serverless architecture to build a real, production-ready AI application.
 
+---
+
 ### 🚀 Demo
 
-👉 Live App: https://blog-generator-with-aws-bedrock.streamlit.app/
-👉 Backend: AWS Lambda + API Gateway
-👉 Model: Meta Llama (Amazon Bedrock)
+- 👉 Live App: https://blog-generator-with-aws-bedrock.streamlit.app/  
+- 👉 Backend: AWS Lambda + API Gateway  
+- 👉 Model: Meta Llama (Amazon Bedrock)
+
+---
 
 ### 🧠 Features
 
-✔ Generate AI-written 200-word blogs instantly
-✔ Serverless backend (no servers to manage)
-✔ Secure integration with Amazon Bedrock
-✔ Blogs stored in S3 automatically
-✔ Simple UI built with Streamlit
-✔ Deployed and production-ready
+- ✔ Generate AI-written blogs  
+- ✔ Serverless backend  
+- ✔ Secure integration  
+- ✔ Stored in S3  
+- ✔ Streamlit UI  
+- ✔ Deployed  
+
+---
 
 ### 🏗 Architecture
+
+```
 Streamlit UI  →  API Gateway  →  AWS Lambda  →  Amazon Bedrock (Llama)
-                                         ↓
-                                        S3 (blog storage)
+                             ↓
+                           S3 (blog storage)
+```
+
+---
 
 ### 🛠 Tech Stack
 
-Cloud: AWS (Lambda, API Gateway, S3, Bedrock)
-Backend: Python + boto3
-Frontend: Streamlit
-Model: Meta Llama (Bedrock)
+- Cloud: AWS (Lambda, API Gateway, S3, Bedrock)  
+- Backend: Python + boto3  
+- Frontend: Streamlit  
+- Model: Meta Llama (Bedrock)  
 
-🔌 API Endpoint (Backend)
+---
 
-POST /blog-generation
+### 🔌 API Endpoint (Backend)
 
-Request:
+**POST /blog-generation**
 
+#### Request
+
+```json
 {
   "blog_topic": "black holes"
 }
+```
 
+#### Response
 
-Response:
-
+```json
 {
   "message": "Blog generated successfully",
   "blog": "Your generated blog content here..."
 }
+```
 
-🖥 Running Frontend Locally
+---
+
+### 🖥 Running Frontend Locally
+
+```bash
 pip install -r requirements.txt
 streamlit run app.py
+```
 
+---
 
-Place your API URL inside secrets.toml:
+### 🔐 Configure API URL (Streamlit Secrets)
 
+Create or edit:
+
+`.streamlit/secrets.toml`
+
+```toml
 API_URL = "https://your-api-url.amazonaws.com/dev/blog-generation"
+```
 
+Streamlit automatically loads it — **clean & secure** 🎯
 
-(Streamlit automatically loads it — clean & secure!)
+---
 
-### ⚙ Lambda Handler 
+### ⚙ Lambda Handler Workflow
 
-1️⃣ Receive topic via API Gateway
-2️⃣ Call Bedrock model via boto3
-3️⃣ Generate blog text
-4️⃣ Save result in S3
-5️⃣ Return response to UI
+- 1️⃣ Receive topic via API Gateway  
+- 2️⃣ Call Bedrock model via boto3  
+- 3️⃣ Generate blog text  
+- 4️⃣ Save result in S3  
+- 5️⃣ Return response to UI  
