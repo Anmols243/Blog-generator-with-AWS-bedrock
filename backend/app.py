@@ -61,13 +61,15 @@ def lambda_handler(event, context):
     else:
         print("No blog was generated")
 
-    return{
-        "statusCode":200,
-        "body":json.dumps({
-            "body":"Blog generation completed",
-            "blog": generate_blog})
-        
+    return {
+        "statusCode": 200,
+        "headers": {"Content-Type": "application/json"},
+        "body": json.dumps({
+            "message": "Blog generated successfully",
+            "blog": generate_blog
+        })
     }
+
 
 
 
